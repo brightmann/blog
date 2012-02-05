@@ -1,0 +1,85 @@
+/* $Id: style.css,v 1.2 2004/08/20 09:34:52 dries Exp $ */
+
+/*
+** HTML elements
+*/
+body {
+  background-repeat: repeat-x;
+  font-family: verdana, 'trebuchet ms', sans-serif;
+  /* background-image: url(background.gif); border-top: 10px solid gray; */
+}
+ul {
+  list-style-type: disc;
+}
+
+/*
+** Page layout blocks / IDs
+*/
+#main {
+/*  width: 500px; *avs* */
+}
+#sidebar-left {
+  border-right: 1px solid gray;
+}
+#sidebar-right {
+  border-left: 1px solid gray;
+}
+
+/*
+** Common declarations for child classes of node, comment, block, box etc
+*/
+#header h1 { margin-bottom:0; }
+#header .title {
+  font:bold italic 2.1em Georgia,"trebuchet ms",sans-serif;
+}
+#header .title a,
+#header .title a:link,
+#header .title a:visited,
+#header .title a:active {
+  text-decoration: underline;
+}
+.node .title {
+  font-size: 1.3em;
+}
+.node .title a,
+.node .title a:link,
+.node .title a:active,
+.node .title a:visited {
+  text-decoration: none;
+  font-weight: bold;
+}
+.node .title a:hover {
+  text-decoration: underline;
+}
+.links {
+  margin: 1em 0 3em 0;
+  text-align: right;
+ }
+.comment .content, .block .content, .menu {
+  font-size: 0.9em;
+}
+.block {
+  padding-bottom: 1em;
+}
+.block .title {
+  font-size: 1em;
+  font-variant: small-caps;
+}
+
+/*
+** Module specific styles
+*/
+.item-list ul li {
+  list-style: square;
+}
+#aggregator .source {
+  color: gray;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.rss-feed {
+	margin-left: 5px;
+	padding-left: 18px;
+	background: url("/images/feed-icon-14x14.png") no-repeat scroll 0 100% transparent;
+}

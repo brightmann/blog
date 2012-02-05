@@ -1,0 +1,18 @@
+# Site custom fields
+title: Thinking IN Action
+domain: example.com
+username: username
+email: username@example.com
+google_analytics_id: UA-0-0
+
+# Site configuration
+permalink: /:year/:month/:day/:title.html
+exclude: Gemfile, CNAME
+regeneration: true
+pygments: true
+markdown: rdiscount
+
+# Plugins configuration
+category_dir: categories
+tag_dir: tags
+tag_title_prefix: 'Tag: '
