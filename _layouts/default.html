@@ -26,6 +26,7 @@
       <h1 class="site-name title"><a href="/">{{ site.title }}</a></h1>
     </div>
 
+    <aside>
     <table id="content">
       <tr>
         <!--
@@ -43,21 +44,7 @@
             <div class="content">
               I doing a dream, But I'm trying to make it a reality.
               <div class="more-link">
-                —— <a href="http://www.zealic.me">Zealic</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="block">
-            <h2 class="title">Recent</h2>
-            <div class="content">
-              <div class="item-list">
-                <ul>
-                  {% for post in site.posts limit: 5 %}
-                  <li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-                  {% endfor %}
-                  
-                </ul>
+                — <a href="http://www.zealic.me">Zealic</a>
               </div>
             </div>
           </div>
@@ -89,8 +76,28 @@
           </div>
 
           <div class="block">
+            <h2 class="title">Recent Posts</h2>
+            <div class="content">
+              <div class="item-list">
+                <ul>
+                  {% for post in site.posts limit: 5 %}
+                  <li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+                  {% endfor %}
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <h2 class="title">Recent Comments</h2>
+            <div class="dsq-widget">  
+              <script type="text/javascript" src="http://zealic.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=1&avatar_size=24&excerpt_length=50"></script> 
+            </div> 
+          </div>
+
+          <div class="block">
             <h2 class="title">Twitter</h2>
-            
             <div class="content">
               <div class="item-list" id="tweets">
               </div>
@@ -117,6 +124,7 @@
         </td>
       </tr>
     </table>
+    </aside>
 
     <script type="text/javascript">
       var disqus_shortname = 'zealic';
