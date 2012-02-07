@@ -11,6 +11,7 @@ exclude: Gemfile, CNAME
 regeneration: true
 pygments: true
 markdown: rdiscount
+paginate: 10
 
 # Plugins configuration
 category_dir: categories

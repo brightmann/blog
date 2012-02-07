@@ -6,20 +6,25 @@ body: full-width page
   <div class="post">
     <h1 class="post-title">{{ page.year }}</h1>
     <p class="lead">Posts from the year {{ page.year }}</p>
+      <ul>
     {% for m in (1..12) reversed %}
       {% if page.collated_posts[page.year][m] %}
-        <h3>{{ m | date_to_month }}</h3>
+        <li>
+          <h3><a href="/{{ page.year }}/{{ m | normalize_month }}/">{{page.year}}.{{ m | normalize_month }}</a></h3>
+        </li>
+        <ul>
         {% for d in (1..31) reversed %}
           {% if page.collated_posts[page.year][m][d] %}
             {% for p in page.collated_posts[page.year][m][d] reversed %}
-              <div>
-                <strong>{{ p.date | date: "%d" }}</strong>
-                <a href='{{ p.url }}'>{{ p.title }}</a>
-              </div>
+            <li>
+              <strong>{{ p.date | date: "%d" }}</strong> : <a href='{{ p.url }}'>{{ p.title }}</a>
+            </li>
             {% endfor %}
           {% endif %}
         {% endfor %}
+        </ul>
       {% endif %}
+      </ul>
     {% endfor %}
   </div>
 </div><!-- end: #content-->

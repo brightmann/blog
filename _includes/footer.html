@@ -1,0 +1,28 @@
+<hr style="border-width: 0pt 0pt 1px;" />
+<div id="footer">
+  <span>
+    本站内容未做特别说明者均使用 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创作共用协议</a>。
+  </span>
+  <div style="float: right; text-align: right;">
+    <div>
+      Copyright &copy; {{username | capitalize}} 2012.
+    </div>
+    <div>
+      Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a>
+      and <a href="http://disqus.com">Disqus</a>,
+      Hosted by <a href="http://github.com">GitHub</a>.
+    </div>
+  </div>
+</div>
+
+<!-- Google analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{google_analytics_id}}']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+</script>

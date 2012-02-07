@@ -1,0 +1,87 @@
+{% assign recent_posts_count = 10 %}
+
+<aside>
+  <div class="block">
+    <h2 class="title">About Me</h2>
+    <div class="content">
+      {% include about.html %}
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="title">Tags (<a href="/tags/">...</a>)</h2>
+    <div class="content">
+      <div class="item-list tag-cloud">
+        <ul>
+          {% for tag in site.tags %}
+          <li><a href="/tags/{{ tag | first | replace:' ','-' | downcase }}/" name="{{ tag | first | replace:' ','-' | downcase }}">{{ tag | first }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="title">Categories (<a href="/categories/">...</a>)</h2>
+    <div class="content">
+      <div class="item-list">
+        <ul>
+          {% for cat in site.categories %}
+          <li><a href="/categories/{{ cat | first | replace:' ','-' | downcase }}/">{{ cat | first }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="title">Archives</h2>
+    <div class="content">
+      <div class="item-list">
+        <ul>
+          {% for year in site.all_years %}
+              <li><a href="/{{ year }}/">{{ year }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="title">Recent Posts</h2>
+    <div class="content">
+      <div class="item-list">
+        <ul>
+          {% for post in site.posts limit: recent_posts_count %}
+          <li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="title">Recent Comments</h2>
+    <div id="recent_comments">
+    </div> 
+  </div>
+
+  <div class="block">
+    <h2 class="title">Twitter</h2>
+    <div class="content">
+      <div class="item-list" id="tweets">
+      </div>
+      <div class="more-link">
+        <a href="https://twitter.com/{{username}}" class="twitter-follow-button" data-show-count="false" data-width="200px" data-align="right">Follow @{{username | capitalize}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 class="title">Subscribe</h2>
+    <div class="content">
+      <a href="http://feeds.feedburner.com/{{username}}" rel="alternate" type="application/rss+xml" class="rss-feed">RSS Feed</a>
+    </div>
+  </div>
+
+</aside>
