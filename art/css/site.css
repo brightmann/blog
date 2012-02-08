@@ -1,0 +1,39 @@
+/* ========== Styles for Elements ========== */
+body {
+  background: #E5ECF4 url(/art/img/bg.png) repeat-x;
+}
+
+pre {
+  background: #C6D9E0;
+  border: 1px solid #0E8CAE;
+  padding: 0em 0.5em 0.5em 0em;
+}
+
+code {
+  color: #646EC7;
+}
+
+hr {
+  border: 1px solid gray;
+  height: 1px;
+}
+
+
+/* ========== Styles for Classes ========== */
+.container {
+  border: 1px solid #369;
+  padding: 10px 10px 0px;
+}
+
+.rss-feed {
+  margin-left: 5px;
+  padding-left: 18px;
+  background: url("/art/img/feed-icon-14x14.png") no-repeat scroll 0 100% transparent;
+}
+
+
+/* ========== Styles for IDs ========== */
+#footer {
+  font-size: 0.8em;
+  padding-top: 0em;
+}
