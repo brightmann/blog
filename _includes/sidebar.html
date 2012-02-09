@@ -1,6 +1,19 @@
 {% assign recent_posts_count = 10 %}
-
 <aside>
+  <div class="block">
+    <nav role="navigation">
+      <form action="http://google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="q" value="site:{{ site.domain }}" />
+          <input class="search" type="text" name="q" results="0" placeholder="Search" />
+        </fieldset>
+      </form>
+      <div role="subscription" data-subscription="rss">
+        <a href="http://feeds.feedburner.com/{{username}}" rel="alternate" type="application/rss+xml" class="rss-feed">RSS Feed</a>
+      </div>
+    </nav>
+  </div>
+
   <div class="block">
     <h2 class="title">About Me</h2>
     <div class="content">
@@ -74,13 +87,6 @@
       <div class="more-link">
         <a href="https://twitter.com/{{username}}" class="twitter-follow-button" data-show-count="false" data-width="200px" data-align="right">Follow @{{username | capitalize}}</a>
       </div>
-    </div>
-  </div>
-
-  <div class="block">
-    <h2 class="title">Subscribe</h2>
-    <div class="content">
-      <a href="http://feeds.feedburner.com/{{username}}" rel="alternate" type="application/rss+xml" class="rss-feed">RSS Feed</a>
     </div>
   </div>
 

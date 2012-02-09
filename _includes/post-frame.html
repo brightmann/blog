@@ -1,13 +1,16 @@
-<div class="node">
-  <div>
-    <h2 class="title"><a href="{{post.url}}">{{ post.title }}</a></h2>
-  </div>
+<article data-uuid="{{ post.uuid }}">
+  <header>
+    <h2 class="entry-title"><a href="{{post.url}}">{{ post.title }}</a></h2>
+    <time datetime="{{ post.date }}" pubdate updated>
+      {{ post.date }}
+    </time>
+  </header>
 
-  <div class="content">
+  <div class="entry-content">
     {{ content }}
   </div>
 
-  <div class="links">
+  <div class="entry-links">
     {% if page == post %}
     <a href="#disqus_thread" data-disqus-identifier="{{ post.id }}">View Comments</a> |
     {% else %}
@@ -36,4 +39,4 @@
       {% endfor %}
     </div>
   </div>
-</div>
+</article>

@@ -1,12 +1,11 @@
 {% for post in paginator.posts %}
 {% assign content = post.content %}
-  <hr />
 {% include post-frame.html %}
 {% endfor %}
 
 {% if paginator.total_pages > 1 %}
-  <hr />
-  <div id="pagination">
+  <nav role="pagination">
+    <div>
     {% if paginator.previous_page %}
       <a class="prev" href="/{%if paginator.previous_page > 1 %}page{{ paginator.previous_page }}/{% endif %}">&laquo; Newer</a>
     {% endif %}
@@ -22,5 +21,6 @@
     {% if paginator.next_page %}
       <a class="next" href="/page{{ paginator.next_page }}/">Older &raquo;</a>
     {% endif %}
-  </div>
+    </div>
+  </nav>
 {% endif %}

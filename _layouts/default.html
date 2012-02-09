@@ -1,6 +1,6 @@
 {% include config.liquid %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html>
   <head>
     <title>{% if page.title %}{{ page.title | append: ' - ' }}{% endif %}{{ site.title }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,9 +8,14 @@
   </head>
 
   <body>
-    <div id="header">
-      <h1 class="site-name title"><a href="/">{{ site.title }}</a></h1>
-    </div>
+    <header id="header">
+      <hgroup>
+        <h1>
+          <a href="/">{{ site.title }}</a>
+        </h1>
+        <h2>{{ username | capitalize}}'s Blog</h2>
+      </hgroup>
+    </header>
 
     <table id="content">
       <tr>
