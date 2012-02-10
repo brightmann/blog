@@ -41,14 +41,29 @@ time {
   color: #777;
 }
 
-pre {
-  background: #C6D9E0;
-  border: 1px solid #0E8CAE;
-  padding: 0em 0.5em 0.5em 0em;
+pre[lang=none] {
+  background-color: black;
+  color: white;
+  font-weight: 400;
+  font-style: normal;
+  padding: 1em;
+  line-height: 1.8em;
+  overflow: auto;
+  position: relative;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px #000;
+  -moz-box-shadow: 2px 2px 5px #000;
+  -webkit-box-shadow: 2px 2px 5px #000;
 }
 
 code {
-  color: #646EC7;
+  display: inline;
+  color: black;
+  box-shadow: 1px 1px 3px #000;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
 }
 
 

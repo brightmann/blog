@@ -78,12 +78,16 @@ function Startup(username) {
 
   // jquery-snippet
   (function() {
-    var codeBlocks = $("pre[lang]");
+    var codeBlocks = $("pre");
     if(codeBlocks.size() > 0) {
       $.loadCss(require.css("jquery-snippet"));
       require(["jquery-snippet"], function() {
         codeBlocks.each(function() {
-          $(this).snippet($(this).attr("lang"));
+          var lang = $(this).attr("lang");
+          if(lang)
+            $(this).snippet(lang, {style: "darkness"});
+          else
+            $(this).attr("lang", "none");
         });
       });
     }

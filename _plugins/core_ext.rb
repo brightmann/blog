@@ -36,11 +36,3 @@ module Jekyll
 
 end
 
-class << CGI
-  alias_method :orig_unescape, :unescape
-
-  def unescape(url)
-    # Hack Post.destination to replace whitespace
-    orig_unescape(url).gsub(/(\s)/, '-')
-  end
-end
