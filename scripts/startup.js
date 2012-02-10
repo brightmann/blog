@@ -103,13 +103,16 @@ function Startup(username) {
     };
 
     // Post comments
-    $("#comments").each(function() {
-      disqus_identifier = $(this).attr("identifier");
-      $(this).append($("<div>", {id: "disqus_thread"}));
+    var post = $("article");
+    if(post.size() == 1) {
+      var identifier = post.data("identifier");
+      $("div[data-identifier=" + identifier + "]").append($("<div>", {id: "disqus_thread"}));
+      disqus_identifier = identifier;
       
       LoadScript('http://' + username + '.disqus.com/embed.js');
-    });
+    }
 
+    // Recent comments
     $("#recent_comments").each(function() {
       $(this).addClass("dsq-widget");
       LoadScript('http://' + username + '.disqus.com/recent_comments_widget.js'

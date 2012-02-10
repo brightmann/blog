@@ -1,4 +1,4 @@
-<article data-uuid="{{ post.uuid }}">
+<article data-identifier="{{ post.uuid }}">
   <header>
     <h2 class="entry-title"><a href="{{post.url}}">{{ post.title }}</a></h2>
     <time datetime="{{ post.date }}" pubdate updated>
@@ -7,7 +7,7 @@
   </header>
 
   <div class="entry-content">
-    {{ content }}
+      {{ content }}
   </div>
 
   <div class="entry-links">
