@@ -9,11 +9,23 @@
         return result;
     }
 
+    // Get css url
+    require.css = function (name) {
+        var context = require.s.contexts["_"];
+        var specialTheme = name + "/theme";
+        if (context.config.paths.hasOwnProperty(specialTheme)) {
+            name = specialTheme;
+        }
+        return context.nameToUrl(name, ".css", null);
+    };
+
     // Module Map
     var modules =
     {
-        "jquery": "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min",
-        "audio.js": "http://kolber.github.com/audiojs/audiojs/audio",
+        "jquery": "/scripts/lib/jquery.min",
+        "audiojs": "/scripts/lib/audiojs/audio.min",
+        "jquery-snippet": "/scripts/lib/jquery-plugins/jquery.snippet.min",
+        "jquery-snippet/theme": "/scripts/lib/jquery-plugins/jquery.snippet.min",
         "twitter-widgets": "http://platform.twitter.com/widgets",
         "twitterjs": "http://twitterjs.googlecode.com/svn/trunk/src/twitter.min",
         "sharethis": "http://w.sharethis.com/button/buttons",
@@ -40,6 +52,44 @@ function Initialize() {
 }
 
 function Startup(username) {
+  (function() {
+    jQuery.extend({
+        loadCss: function (url) {
+            /// <summery>Load CSS file.</summery>
+            /// <param name="url" type="String">
+            /// CSS file url.
+            /// </param>
+            var link = $("<link />").attr({ type: 'text/css', rel: 'stylesheet', href: url });
+
+            $.ajax({ url: url, async: true });
+            // Chrome insert new link must on new function call.
+            $.proxy(function () {
+                this.insertBefore($("link").first());
+            }, link)();
+            if ($.browser.msie) {
+                // MSIE <link> tag insertion sequence does not work, dynamically added CSS always overwrite existing style.
+                // So here update all styles
+                $("link").attr("type", "").attr("type", "text/css");
+            }
+        }
+    });
+  })();
+
+
+  // jquery-snippet
+  (function() {
+    var codeBlocks = $("pre[lang]");
+    if(codeBlocks.size() > 0) {
+      $.loadCss(require.css("jquery-snippet"));
+      require(["jquery-snippet"], function() {
+        codeBlocks.each(function() {
+          $(this).snippet($(this).attr("lang"));
+        });
+      });
+    }
+  })();
+
+
   // disqus comments
   (function() {
     disqus_shortname = username;
@@ -67,6 +117,7 @@ function Startup(username) {
     LoadScript('http://' + username + '.disqus.com/count.js');
   })();
 
+
   // Twitter
   require(["twitter-widgets", "twitterjs"], function() {
     getTwitters('tweets', { 
@@ -78,4 +129,15 @@ function Startup(username) {
       template: '%text% - %time%'
     });
   });
+
+  // audio.js
+  (function() {
+    if($("audio").size() > 0) {
+      require(["audiojs"], function() {
+        audiojs.events.ready(function() {
+          var as = audiojs.createAll();
+        });
+      });
+    }
+  })();
 }
