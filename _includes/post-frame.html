@@ -12,9 +12,9 @@
 
   <div class="entry-links">
     {% if page == post %}
-    <a href="#disqus_thread" data-disqus-identifier="{{ post.id }}">View Comments</a> |
+    <a href="#disqus_thread" data-disqus-identifier="{{ post.uuid }}">View Comments</a> |
     {% else %}
-    <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.id }}">View Comments</a> |
+    <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.uuid }}">View Comments</a> |
     {% endif %}
 
     {% capture absolute_url %}http://{{ site.domain }}{{ post.url }}{% endcapture %}

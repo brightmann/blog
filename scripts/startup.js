@@ -112,18 +112,20 @@ function Startup(config) {
       LoadScript('http://' + config.username + '.disqus.com/embed.js');
     }
 
-    // Recent comments
-    $("#recent_comments").each(function() {
-      $(this).addClass("dsq-widget");
-      LoadScript('http://' + config.username + '.disqus.com/recent_comments_widget.js'
-            + '?num_items=10'
-            + '&hide_avatars=1&avatar_size=24&excerpt_length=50;');
-    });
-
     // Comment count
     LoadScript('http://' + config.username + '.disqus.com/count.js');
   })();
 
+  // audio.js
+  (function() {
+    if($("audio").size() > 0) {
+      require(["audiojs"], function() {
+        audiojs.events.ready(function() {
+          var as = audiojs.createAll();
+        });
+      });
+    }
+  })();
 
   (function() {
     if(config.microlog.type == "twitter") {
@@ -136,18 +138,6 @@ function Startup(config) {
           ignoreReplies: true, 
           clearContents: true,
           template: '%text% - %time%'
-        });
-      });
-    }
-  })();
-
-  
-  // audio.js
-  (function() {
-    if($("audio").size() > 0) {
-      require(["audiojs"], function() {
-        audiojs.events.ready(function() {
-          var as = audiojs.createAll();
         });
       });
     }
