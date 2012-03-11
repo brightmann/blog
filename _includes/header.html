@@ -3,10 +3,18 @@
     <script type="text/javascript" src="/scripts/require.js"></script>
     <script type="text/javascript" src="/scripts/startup.js"></script>
     <script type="text/javascript">
-      Initialize();
+      $CONFIG = {
+        username: "{{ username}}",
+        microlog: {
+          type: "{{ site.microlog.type }}",
+          uid: "{{ site.microlog.uid }}",
+          token: "{{ site.microlog.token }}",
+        }
+      };
+      Initialize($CONFIG);
       require(["jquery"], function() {
         $(function() {
-          Startup("{{ username }}");
+          Startup($CONFIG);
         })
       });
     </script>

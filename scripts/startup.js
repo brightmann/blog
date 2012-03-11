@@ -42,7 +42,7 @@
 
 // Sharethis button
 
-function Initialize() {
+function Initialize(config) {
   window.switchTo5x = true;
   
   // Sharethis button
@@ -51,7 +51,7 @@ function Initialize() {
   });
 }
 
-function Startup(username) {
+function Startup(config) {
   (function() {
     jQuery.extend({
         loadCss: function (url) {
@@ -96,7 +96,7 @@ function Startup(username) {
 
   // disqus comments
   (function() {
-    disqus_shortname = username;
+    disqus_shortname = config.username;
     
     var LoadScript = function(url) {
       require([url]);
@@ -109,34 +109,39 @@ function Startup(username) {
       $("div[data-identifier=" + identifier + "]").append($("<div>", {id: "disqus_thread"}));
       disqus_identifier = identifier;
       
-      LoadScript('http://' + username + '.disqus.com/embed.js');
+      LoadScript('http://' + config.username + '.disqus.com/embed.js');
     }
 
     // Recent comments
     $("#recent_comments").each(function() {
       $(this).addClass("dsq-widget");
-      LoadScript('http://' + username + '.disqus.com/recent_comments_widget.js'
+      LoadScript('http://' + config.username + '.disqus.com/recent_comments_widget.js'
             + '?num_items=10'
             + '&hide_avatars=1&avatar_size=24&excerpt_length=50;');
     });
 
     // Comment count
-    LoadScript('http://' + username + '.disqus.com/count.js');
+    LoadScript('http://' + config.username + '.disqus.com/count.js');
   })();
 
 
-  // Twitter
-  require(["twitter-widgets", "twitterjs"], function() {
-    getTwitters('tweets', { 
-      id: username, 
-      count: 5, 
-      enableLinks: true, 
-      ignoreReplies: true, 
-      clearContents: true,
-      template: '%text% - %time%'
-    });
-  });
+  (function() {
+    if(config.microlog.type == "twitter") {
+      // Twitter
+      require(["twitter-widgets", "twitterjs"], function() {
+        getTwitters('tweets', { 
+          id: config.microlog.uid, 
+          count: 5, 
+          enableLinks: true, 
+          ignoreReplies: true, 
+          clearContents: true,
+          template: '%text% - %time%'
+        });
+      });
+    }
+  })();
 
+  
   // audio.js
   (function() {
     if($("audio").size() > 0) {

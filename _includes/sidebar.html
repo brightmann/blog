@@ -80,14 +80,7 @@
   </div>
 
   <div class="block">
-    <h2 class="title">Twitter</h2>
-    <div class="content">
-      <div class="item-list" id="tweets">
-      </div>
-      <div class="more-link">
-        <a href="https://twitter.com/{{username}}" class="twitter-follow-button" data-show-count="false" data-width="200px" data-align="right">Follow @{{username | capitalize}}</a>
-      </div>
-    </div>
+    {% include microlog.html %}
   </div>
 
 </aside>

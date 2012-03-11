@@ -1,0 +1,21 @@
+{% case site.microlog.type %}
+  {% when 'sina' %}
+    <h2 class="title">新浪微博</h2>
+    <div class="content">
+      <iframe width="100%" height="550" class="share_self"
+        frameborder="0"
+        scrolling="no"
+        src="http://widget.weibo.com/weiboshow/index.php?fansRow=2&isWeibo=1&isFans=1&uid={{site.microlog.uid}}&verifier={{site.microlog.token}}"></iframe>
+    </div>
+  {% when 'twitter' %}
+    <h2 class="title">Twitter</h2>
+    <div class="content">
+      <div class="item-list" id="tweets">
+      </div>
+      <div class="more-link">
+        <a href="https://twitter.com/{{site.microlog.uid}}" class="twitter-follow-button" data-show-count="false" data-width="200px" data-align="right">Follow @{{site.microlog.uid | capitalize}}</a>
+      </div>
+    </div>
+  {% else %}
+  <!-- No microlog -->
+{% endcase %}
