@@ -34,5 +34,18 @@ module Jekyll
     end
   end
 
+  class Pagination
+    alias_method :orig_paginate, :paginate
+
+    def paginate(site, page)
+      orig_paginate site, page
+      site.pages.each do |cur_page|
+        if cur_page.pager && cur_page.pager.page > 1
+          cur_page.dir = File.join(page.dir, "page/#{cur_page.pager.page}")
+        end
+      end
+    end
+  end
+
 end
 
