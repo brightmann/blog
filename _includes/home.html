@@ -7,7 +7,7 @@
   <nav role="pagination">
     <div>
     {% if paginator.previous_page %}
-      <a class="prev" href="/{%if paginator.previous_page > 1 %}page{{ paginator.previous_page }}/{% endif %}">&laquo; Newer</a>
+      <a class="prev" href="/{%if paginator.previous_page > 1 %}page/{{ paginator.previous_page }}/{% endif %}">&laquo; Newer</a>
     {% endif %}
 
     {% for page in (1..paginator.total_pages) %}
